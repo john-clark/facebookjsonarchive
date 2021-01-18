@@ -1,8 +1,10 @@
 <?php
 //just in case we want line numbers, uncomment below
 $count = 0;
+//put your fbid here
+$fbid = "something";
 // load the file into memory
-$readjson = file_get_contents('facebook-jrc3rd/posts/your_posts_1.json');
+$readjson = file_get_contents('facebook-'.$fbid.'/posts/your_posts_1.json');
 // decode the file in memory to json
 $json_object = json_decode($readjson, true);
 // go through the json file and make each section an entry
@@ -76,7 +78,7 @@ foreach ($json_object as $json_entry) {
                         foreach ($attachments['data'] as $attach_data) {
                                 if (isset($attach_data['media']['uri']) && (!empty($attach_data['media']['uri']))) {
 //                                      print_r($attach_data['media']['uri']);
-                                        $nextmedia = "<img src=\"./facebook-jrc3rd/".$attach_data['media']['uri']."\" width=\"100\">";
+                                        $nextmedia = "<img src=\"./facebook-".$fbid."/".$attach_data['media']['uri']."\" width=\"100\">";
                                         $media = $nextmedia." ".$media;
                                 } else {
                                         //-- no media
